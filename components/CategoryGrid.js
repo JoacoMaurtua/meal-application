@@ -1,6 +1,6 @@
 import { View, Text, Pressable, StyleSheet, Platform, Image } from 'react-native';
 
-const CategoryGrid = ({ title, color, icon }) => {
+const CategoryGrid = ({ title, color, icon, onPress }) => {
   return (
     <View style={styles.categoryGridContainer}>
       <Pressable
@@ -9,6 +9,8 @@ const CategoryGrid = ({ title, color, icon }) => {
           styles.button,
           pressed ? styles.buttonPressed : null,
         ]}
+
+        onPress={onPress} //Al presionarlo se debe ir a la ventana MealsOverviewScreen
       >
         <View style={[styles.innerContainer, {backgroundColor:color}]}>
           <Text style={styles.text}>{title}</Text>

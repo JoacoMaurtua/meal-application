@@ -4,25 +4,40 @@ import { CATEGORIES } from '../data/dummy-data';
 
 import CategoryGrid from '../components/CategoryGrid';
 
-function renderCategoryItem(itemData) {
-  return (
-    <CategoryGrid title={itemData.item.title} color={itemData.item.color} icon={itemData.item.icon}/>
-  );
-}
 
 //reto personal: hacerlo con scrollable
-function CategoriesScreen() {
+function CategoriesScreen({navigation}) //El objeto navigation contiene los metodos necesarios para navegar
+{
+  function renderCategoryItem(itemData) {
+
+    function pressHandler(){
+      navigation.navigate("MealsOverview",{//El metodo navigate conduce a la ventana cuto name sea pasado como paramatro
+        categoryID: itemData.item.id,
+        categoryName: itemData.item.title
+      }) //como 2do parametro opcional, navigate recibe un objeto que contiene los params que podemos enviar
+    };
+
+    return (
+      <CategoryGrid
+        title={itemData.item.title}
+        color={itemData.item.color}
+        icon={itemData.item.icon}
+        onPress={pressHandler}
+      />
+    );
+  }
+
   return (
     <View style={styles.categoriesContainer}>
       <FlatList
         data={CATEGORIES}
         keyExtractor={(index) => index.id}
-        renderItem={renderCategoryItem}
+        renderItem={renderCategoryItem} //metodo de renderizado: por cada posicion mapeada ejecuta renderCategoryItem 
         numColumns={2}
       />
     </View>
   );
-}
+};
 
 export default CategoriesScreen;
 
@@ -44,3 +59,5 @@ const styles = StyleSheet.create({
         </ScrollView>
     </View> */
 }
+
+
