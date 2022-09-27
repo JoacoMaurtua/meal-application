@@ -1,37 +1,45 @@
-import { FlatList } from "react-native";
+import { FlatList, View, Text, ScrollView, StyleSheet } from 'react-native';
 
-import { CATEGORIES } from "../data/dummy-data";
+import { CATEGORIES } from '../data/dummy-data';
 
-import CategoryGrid from "../components/CategoryGrid";
+import CategoryGrid from '../components/CategoryGrid';
 
-function renderCategoryItem(itemData){
-  return <CategoryGrid title={itemData.item.title} color={itemData.item.color}/>
-}
-
-function CategoriesScreen(){
-  return(
-    <FlatList
-      data={CATEGORIES}
-      keyExtractor={(item) => item.id}
-      renderItem={renderCategoryItem}
-    />
+function renderCategoryItem(itemData) {
+  return (
+    <CategoryGrid title={itemData.item.title} color={itemData.item.color} />
   );
 }
 
+//reto personal: hacerlo con scrollable
+function CategoriesScreen() {
+  return (
+    <View style={styles.categoriesContainer}>
+      <FlatList
+        data={CATEGORIES}
+        keyExtractor={(index) => index.id}
+        renderItem={renderCategoryItem}
+        numColumns={2}
+      />
+    </View>
+  );
+}
 
 export default CategoriesScreen;
 
+const styles = StyleSheet.create({
+  categoriesContainer: {
+    felx: 1,
+    marginTop: 45,
+  },
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+//Version Alternativa a FlatList
+{
+  /* <View>
+        <ScrollView>
+          {CATEGORIES.map((category, index) => (
+            <Text>{category.title}</Text>
+          ))}
+        </ScrollView>
+    </View> */
+}
