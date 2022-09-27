@@ -1,6 +1,6 @@
-import { View, Text, Pressable, StyleSheet, Platform } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Platform, Image } from 'react-native';
 
-const CategoryGrid = ({ title, color }) => {
+const CategoryGrid = ({ title, color, icon }) => {
   return (
     <View style={styles.categoryGridContainer}>
       <Pressable
@@ -12,6 +12,9 @@ const CategoryGrid = ({ title, color }) => {
       >
         <View style={[styles.innerContainer, {backgroundColor:color}]}>
           <Text style={styles.text}>{title}</Text>
+          <Image
+            source={{uri:`${icon}`}} // No funciona --> Seguir investigando porque
+          />
         </View>
       </Pressable>
     </View>

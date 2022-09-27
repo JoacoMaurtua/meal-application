@@ -2,16 +2,16 @@ import Category from '../models/category';
 import Meal from '../models/meal';
 
 export const CATEGORIES = [
-  new Category('c1', 'Italian', '#f5428d'),
-  new Category('c2', 'Quick & Easy', '#f54242'),
-  new Category('c3', 'Hamburgers', '#f5a442'),
-  new Category('c4', 'German', '#f5d142'),
-  new Category('c5', 'Light & Lovely', '#368dff'),
-  new Category('c6', 'Exotic', '#41d95d'),
-  new Category('c7', 'Breakfast', '#9eecff'),
-  new Category('c8', 'Asian', '#b9ffb0'),
-  new Category('c9', 'French', '#ffc7ff'),
-  new Category('c10', 'Summer', '#47fced')
+  new Category('c1', 'Italian', '#f5428d', 'https://cdn-icons-png.flaticon.com/512/1161/1161623.png'),
+  new Category('c2', 'Quick & Easy', '#f54242','https://cdn-icons-png.flaticon.com/512/4285/4285603.png'),
+  new Category('c3', 'Hamburgers', '#f5a442','https://cdn-icons-png.flaticon.com/512/5930/5930051.png'),
+  new Category('c4', 'German', '#f5d142','https://cdn-icons-png.flaticon.com/512/5098/5098771.png'),
+  new Category('c5', 'Light & Lovely', '#368dff','https://cdn-icons-png.flaticon.com/512/3022/3022781.png'),
+  new Category('c6', 'Exotic', '#41d95d','https://cdn-icons-png.flaticon.com/512/6809/6809574.png'),
+  new Category('c7', 'Breakfast', '#9eecff','https://cdn-icons-png.flaticon.com/512/2366/2366398.png'),
+  new Category('c8', 'Asian', '#b9ffb0','https://cdn-icons-png.flaticon.com/512/1531/1531331.png'),
+  new Category('c9', 'French', '#ffc7ff','https://cdn-icons-png.flaticon.com/512/2164/2164111.png'),
+  new Category('c10', 'Summer', '#47fced','https://cdn-icons-png.flaticon.com/512/782/782930.png')
 ];
 
 export const MEALS = [

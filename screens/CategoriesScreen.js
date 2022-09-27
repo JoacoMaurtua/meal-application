@@ -6,7 +6,7 @@ import CategoryGrid from '../components/CategoryGrid';
 
 function renderCategoryItem(itemData) {
   return (
-    <CategoryGrid title={itemData.item.title} color={itemData.item.color} />
+    <CategoryGrid title={itemData.item.title} color={itemData.item.color} icon={itemData.item.icon}/>
   );
 }
 
@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
         <ScrollView>
           {CATEGORIES.map((category, index) => (
             <Text>{category.title}</Text>
+            <Image source={{uri:category.icon}}/>
           ))}
         </ScrollView>
     </View> */
