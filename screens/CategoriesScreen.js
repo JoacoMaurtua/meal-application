@@ -2,8 +2,10 @@ import { FlatList } from "react-native";
 
 import { CATEGORIES } from "../data/dummy-data";
 
-function renderCategoryItem(item){
-  return;
+import CategoryGrid from "../components/CategoryGrid";
+
+function renderCategoryItem(itemData){
+  return <CategoryGrid title={itemData.item.title} color={itemData.item.color}/>
 }
 
 function CategoriesScreen(){
