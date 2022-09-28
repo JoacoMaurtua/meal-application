@@ -13,7 +13,18 @@ const MealsOverviewScreen = ({route}) => {
   ));
 
   function renderMealItem(itemData){
-    return <MealItem title={itemData.item.title} imageURL={itemData.item.imageUrl} />;
+    const item = itemData.item;
+    
+    //desestructurar toas las props en un objeto:
+    const mealItemProps = {
+      title:item.title,
+      duration:item.duration,
+      imageUrl:item.imageUrl,
+      complexity:item.complexity,
+      affordability: item.affordability,
+    }
+
+    return <MealItem {...mealItemProps} />;
   }
 
   return (
