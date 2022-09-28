@@ -1,19 +1,19 @@
-import {View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet, FlatList} from 'react-native';
+import MealItem from '../components/MealItem';
 
 import {MEALS} from '../data/dummy-data';
 
 const MealsOverviewScreen = ({route}) => {
 
   const id = route.params.categoryID;
-  const title = route.params.categoryName;
-
+  
   //Hacer Match entre las comidas y a que categorias pertenecen
   const displayedMeals = MEALS.filter((mealItem) => (
     mealItem.categoryIds.indexOf(id) >= 0
   ));
 
   function renderMealItem(itemData){
-
+    return <MealItem title={itemData.item.title}/>
   }
 
   return (
