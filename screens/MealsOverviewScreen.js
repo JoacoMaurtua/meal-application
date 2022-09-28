@@ -5,15 +5,15 @@ import {MEALS} from '../data/dummy-data';
 
 const MealsOverviewScreen = ({route}) => {
 
-  const id = route.params.categoryID;
+  const id = route.params.categoryID; //extraigo este valor del objeto params enviado por navigate
   
   //Hacer Match entre las comidas y a que categorias pertenecen
-  const displayedMeals = MEALS.filter((mealItem) => (
-    mealItem.categoryIds.indexOf(id) >= 0
+  const displayedMeals = MEALS.filter((mealItem) => ( // []
+    mealItem.categoryIds.indexOf(id) >= 0 //existen o no en su arreglo de arrays cn
   ));
 
   function renderMealItem(itemData){
-    return <MealItem title={itemData.item.title}/>
+    return <MealItem title={itemData.item.title} imageURL={itemData.item.imageUrl} />;
   }
 
   return (
