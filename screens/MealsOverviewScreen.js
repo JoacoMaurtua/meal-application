@@ -14,7 +14,7 @@ const MealsOverviewScreen = ({route}) => {
 
   function renderMealItem(itemData){
     const item = itemData.item;
-    
+
     //desestructurar toas las props en un objeto:
     const mealItemProps = {
       title:item.title,
@@ -28,7 +28,7 @@ const MealsOverviewScreen = ({route}) => {
   }
 
   return (
-    <View style = {styles.conrainer}>
+    <View style = {styles.container}>
       <FlatList
         data={displayedMeals}
         keyExtractor={(item) => item.id}
@@ -42,7 +42,7 @@ const MealsOverviewScreen = ({route}) => {
 export default MealsOverviewScreen;
 
 const styles = StyleSheet.create({
-  conrainer:{
+  container:{
     flex:1,
     padding: 16,
   }

@@ -15,7 +15,8 @@ const CategoryGrid = ({ title, color, icon, onPress }) => {
         <View style={[styles.innerContainer, {backgroundColor:color}]}>
           <Text style={styles.text}>{title}</Text>
           <Image
-            source={{uri:`${icon}`}} // No funciona --> Seguir investigando porque
+            source={{ uri:icon }} // No funciona --> Seguir investigando porque
+            style={styles.image}
           />
         </View>
       </Pressable>
@@ -49,6 +50,12 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
 
+  image:{
+    width: '45%',
+    height: 50,
+    marginTop: 10,
+  },
+
   text: {
     fontWeight: 'bold',
   },
@@ -61,3 +68,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
 });
+
+
+/* Nota: Cuando se traer una imagen de internet con uri, solo aparecera cuando se definan
+   primero sus dimensiones */

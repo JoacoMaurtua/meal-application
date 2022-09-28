@@ -44,7 +44,6 @@ export default CategoriesScreen;
 const styles = StyleSheet.create({
   categoriesContainer: {
     felx: 1,
-    marginTop: 45,
   },
 });
 
