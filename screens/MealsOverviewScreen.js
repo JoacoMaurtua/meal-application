@@ -31,7 +31,9 @@ const MealsOverviewScreen = ({ route, navigation }) => {
 
     //desestructurar toas las props en un objeto:
     const mealItemProps = {
+      id: item.id,
       title: item.title,
+      imageUrl: item.imageUrl,
       duration: item.duration,
       imageUrl: item.imageUrl,
       complexity: item.complexity,

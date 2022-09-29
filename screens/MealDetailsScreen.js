@@ -1,12 +1,31 @@
-import {View, Text, StyleSheet} from 'react-native';
+import { useEffect } from 'react';
+import {View, Text, StyleSheet, Image} from 'react-native';
+import { MEALS } from '../data/dummy-data';
 
-const MealDetailsScreen = ({route}) => {
+const MealDetailsScreen = ({route, navigation}) => {
+  const id = route.params.id;
   const title = route.params.title;
-  const complexity = route.params.complexity;
+
+  const selectedMeal = MEALS.find(
+    (meal) => meal.id === id
+  ); 
+  
+  //Generar titulos dinamicamente
+  useEffect(() => {
+    navigation.setOptions({
+      title: selectedMeal.title,
+    });
+  }, [navigation, id]);
+
   return (
     <View>
-      <Text>{title}</Text>
-      <Text>{complexity}</Text>
+      <Image source={{uri:selectedMeal.imageUrl}} style={styles.image}/>
+      <Text>{selectedMeal.title}</Text>
+      <View>
+        
+      </View>
+      <Text>Ingredients</Text>
+      <Text>Steps</Text>
     </View>
   )
 }
@@ -14,5 +33,9 @@ const MealDetailsScreen = ({route}) => {
 export default MealDetailsScreen;
 
 const styles = StyleSheet.create({
+  image:{
+    width: '100%',
+    height: 250,
+  }
 
 });
