@@ -35,7 +35,6 @@ const MealsOverviewScreen = ({ route, navigation }) => {
       title: item.title,
       imageUrl: item.imageUrl,
       duration: item.duration,
-      imageUrl: item.imageUrl,
       complexity: item.complexity,
       affordability: item.affordability,
     };

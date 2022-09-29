@@ -7,7 +7,16 @@ import {
   Platform,
 } from 'react-native';
 
-const MealItem = ({ title, imageUrl, duration, complexity, affordability, onPress }) => {
+import MealDetails from '../components/MealDetails';
+
+const MealItem = ({
+  title,
+  imageUrl,
+  duration,
+  complexity,
+  affordability,
+  onPress,
+}) => {
   return (
     <View style={styles.mealItem}>
       <Pressable
@@ -20,11 +29,11 @@ const MealItem = ({ title, imageUrl, duration, complexity, affordability, onPres
             <Image source={{ uri: imageUrl }} style={styles.image} />
             <Text style={styles.title}>{title}</Text>
           </View>
-          <View style={styles.details}>
-            <Text style={styles.datailItem}>{duration}m</Text>
-            <Text style={styles.datailItem}>{complexity.toUpperCase()}</Text>
-            <Text style={styles.datailItem}>{affordability.toUpperCase()}</Text>
-          </View>
+          <MealDetails
+            duration={duration}
+            complexity={complexity}
+            affordability={affordability}
+          />
         </View>
       </Pressable>
     </View>
@@ -65,19 +74,7 @@ const styles = StyleSheet.create({
     margin: 8,
   },
 
-  buttonPressed:{
+  buttonPressed: {
     opacity: 0.5,
-  },
-
-  details: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8,
-  },
-
-  datailItem: {
-    marginHorizontal: 4,
-    fontSize: 12,
   },
 });
