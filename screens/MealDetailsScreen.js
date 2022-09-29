@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
+import { useEffect, useLayoutEffect } from 'react';
+import { View, Text, StyleSheet, Image, ScrollView, Button } from 'react-native';
 import MealDetails from '../components/MealDetails';
 import { MEALS } from '../data/dummy-data';
 import Subtitle from '../components/Subtitle';
@@ -11,11 +11,24 @@ const MealDetailsScreen = ({ route, navigation }) => {
   const selectedMeal = MEALS.find((meal) => meal.id === id);
 
   //Generar titulos dinamicamente
-  useEffect(() => {
+/*   useEffect(() => {
     navigation.setOptions({
       title: selectedMeal.title,
     });
-  }, [navigation, id]);
+  }, [navigation, id]); */
+
+  function headerButtonPressHandler(){
+    console.log('Pressed!');
+  }
+
+  //crear un elemento con interacicon en la cabecera
+  useLayoutEffect(()=>{
+    navigation.setOptions({
+      headerRight:()=>{
+        return <Button title='Tap me' onPress={headerButtonPressHandler}/>
+      }
+    });
+  },[navigation,headerButtonPressHandler])
 
   return (
     <ScrollView style={styles.rootContainer}>

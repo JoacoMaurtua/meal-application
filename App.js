@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import CategoriesScreen from './screens/CategoriesScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealDetailsScreen from './screens/MealDetailsScreen';
@@ -34,6 +34,12 @@ export default function App() {
           <Stack.Screen
             name="MealDetails"
             component={MealDetailsScreen}
+            options={{
+              title: 'Meal Details',
+             /*  headerRight: ()=>{          //Ejemplo de elemento de cabecera sin interaccion
+                return <Text>Arriba</Text>
+              } */
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>
@@ -54,3 +60,7 @@ const styles = StyleSheet.create({});
 /* Para configurar los encabezados y fondos dentro de un NavigationContainer, se puede
    pasar un objeto screenOptions al <Stack.Navigator> para definir estilos predeteminados
    o un objeto options a cada <Stack.Screen> para establecer estilos particulares*/
+
+/* Para agregar elementos en la cabecera, se puede incluir la propiedad headerLeft
+   o headerRight, ambas reciben un componente funcional como valor, ahora, si se desea
+   agregar un componente que interactue, como un boton, el componente debe definirse aparte*/
