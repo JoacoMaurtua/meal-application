@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView } from 'react-native';
 import MealDetails from '../components/MealDetails';
 import { MEALS } from '../data/dummy-data';
 import Subtitle from '../components/Subtitle';
+import List from '../components/List';
 
 const MealDetailsScreen = ({ route, navigation }) => {
   const id = route.params.id;
@@ -17,7 +18,7 @@ const MealDetailsScreen = ({ route, navigation }) => {
   }, [navigation, id]);
 
   return (
-    <View>
+    <ScrollView style={styles.rootContainer}>
       <Image source={{ uri: selectedMeal.imageUrl }} style={styles.image} />
       <Text style={styles.title}>{selectedMeal.title}</Text>
       <MealDetails
@@ -26,28 +27,26 @@ const MealDetailsScreen = ({ route, navigation }) => {
         affordability={selectedMeal.affordability}
       />
 
-      <Subtitle>Ingredients</Subtitle>
+      <View style={styles.listOuterContainer}>
+        <View style={styles.listContainer}>
+          <Subtitle>Ingredients</Subtitle>
+          <List dataArray={selectedMeal.ingredients} />
 
-      <View>
-        {selectedMeal.ingredients.map((ingredient) => (
-          <Text key={ingredient}>{ingredient}</Text>
-        ))}
+          <Subtitle>Steps</Subtitle>
+          <List dataArray={selectedMeal.steps} />
+        </View>
       </View>
-
-      <Subtitle>Steps</Subtitle>
-
-      <View>
-        {selectedMeal.steps.map((step) => (
-          <Text key={step}>{step}</Text>
-        ))}
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 
 export default MealDetailsScreen;
 
 const styles = StyleSheet.create({
+  rootContainer:{
+    marginBottom: 20,
+  },
+
   image: {
     width: '100%',
     height: 300,
@@ -60,5 +59,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-  
+  listContainer:{
+    width: '80%',
+  },
+
+  listOuterContainer:{
+    alignItems: 'center',
+  },
 });

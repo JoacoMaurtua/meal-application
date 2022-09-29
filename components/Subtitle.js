@@ -15,14 +15,16 @@ const styles = StyleSheet.create({
     color: '#f5a442',
     fontSize: 18,
     fontWeight: 'bold',
-    textAlign: 'center',   
+    textAlign: 'center',
+  
   },
 
   subtitleContainer:{
     padding: 6,
     marginVetical: 5,
-    marginHorizontal: 25,
+    marginHorizontal: 12,
     borderBottomColor: '#f5a442',
     borderBottomWidth: 2,
+    marginBottom: 10,  
   },
 });
