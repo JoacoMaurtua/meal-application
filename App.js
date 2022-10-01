@@ -3,10 +3,22 @@ import { StyleSheet, Text } from 'react-native';
 import CategoriesScreen from './screens/CategoriesScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
 import MealDetailsScreen from './screens/MealDetailsScreen';
+import FavoritiesScreen from './screens/FavoritiesScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Stack = createNativeStackNavigator();
+
+const Drawer = createDrawerNavigator();
+
+//congiguraciones del drawer navigator en un componente funcional
+function DrawerNavigator(){
+  return <Drawer.Navigator>
+    <Drawer.Screen name="Categories" component={CategoriesScreen} />
+    <Drawer.Screen name="Favorities" component={FavoritiesScreen} />
+  </Drawer.Navigator>
+}
 
 export default function App() {
   return (
@@ -22,10 +34,13 @@ export default function App() {
           }}
         >
           <Stack.Screen
-            name="MealsCategories"
-            options={{ title: 'All Categories' }}
-            component={CategoriesScreen}
+            name="Drawer"
+            options={{ 
+              title: 'All Categories'
+             }}
+            component={DrawerNavigator}
           />
+
           <Stack.Screen
             name="MealsOverview"
             options={{ title: 'Meals Overview' }}
