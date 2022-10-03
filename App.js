@@ -7,17 +7,42 @@ import FavoritiesScreen from './screens/FavoritiesScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import {Ionicons} from '@expo/vector-icons';
+
 
 const Stack = createNativeStackNavigator();
 
 const Drawer = createDrawerNavigator();
 
 //congiguraciones del drawer navigator en un componente funcional
-function DrawerNavigator(){
-  return <Drawer.Navigator>
-    <Drawer.Screen name="Categories" component={CategoriesScreen} />
-    <Drawer.Screen name="Favorities" component={FavoritiesScreen} />
-  </Drawer.Navigator>
+function DrawerNavigator() {
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: 'white' },
+        drawerContentStyle: { backgroundColor: '#f5a442' },
+        drawerInactiveTintColor: 'white',
+        drawerActiveTintColor: 'black',
+        drawerActiveBackgroundColor: '##fffacd',
+      }}
+    >
+      <Drawer.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={{
+          title: 'All Categories',
+          drawerIcon: ({color,size}) => (
+            <Ionicons name="list" color={color} size={size}/>
+          )
+        }}
+      />
+      <Drawer.Screen name="Favorities" component={FavoritiesScreen} options={{
+         drawerIcon: ({color,size}) => (
+          <Ionicons name="star" color={color} size={size}/>
+        )
+      }}/>
+    </Drawer.Navigator>
+  );
 }
 
 export default function App() {
@@ -35,9 +60,9 @@ export default function App() {
         >
           <Stack.Screen
             name="Drawer"
-            options={{ 
-              title: 'All Categories'
-             }}
+            options={{
+              headerShown: false, //Ocultar el titulo del stack navigator
+            }}
             component={DrawerNavigator}
           />
 
@@ -51,7 +76,7 @@ export default function App() {
             component={MealDetailsScreen}
             options={{
               title: 'Meal Details',
-             /*  headerRight: ()=>{          //Ejemplo de elemento de cabecera sin interaccion
+              /*  headerRight: ()=>{          //Ejemplo de elemento de cabecera sin interaccion
                 return <Text>Arriba</Text>
               } */
             }}
